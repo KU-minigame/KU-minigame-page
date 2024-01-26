@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import './App.css';
 
@@ -28,8 +27,8 @@ const App = () => {
       
       <main>
 
-        <Thumbnail title="페이지1" />
-        <Thumbnail title="페이지2" />
+        <Thumbnail title="카드 맞추기" />
+        <Thumbnail title="비행 게임" />
       </main>
 
       {isLoginPopupOpen && (
