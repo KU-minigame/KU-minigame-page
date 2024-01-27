@@ -1,0 +1,84 @@
+.app {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column; /* 세로로 쌓이도록 변경 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.thumbnail {
+  width: 200px;
+  height: 150px;
+  background-color: #ddd;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+.thumbnail:hover {
+  filter: blur(5px);
+}
+
+.thumbnail span {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  z-index: 999;
+}
+
+.popup button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
