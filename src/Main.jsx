@@ -32,7 +32,6 @@ const App = () => {
         <main>
           <Thumbnail title="레이싱 게임" to="/racinggame"/>
           <Thumbnail title="카드 게임" to="/cardgame"/>
-
           <Routes>
             <Route path="/racinggame" element={<RacingGame />} />
             <Route path="/cardgame" element={<CardGame />} />
@@ -41,7 +40,6 @@ const App = () => {
         </main>
 
         {isLoginPopupOpen && <LoginPopup onClose={closeLoginPopup} />}
-
         {isInfoPopupOpen && <InfoPopup onClose={closeInfoPopup} />}
 
         <footer>
