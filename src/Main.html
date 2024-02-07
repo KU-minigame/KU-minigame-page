@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Responsive Image Carousel ( Animation )</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+<!-- partial:index.partial.html -->
+<main>
+  
+  <ul class='slider'>
+    <li class='item' style="background-image: url('./cona.jpg')">
+      <div class='content'>
+        <h2 class='title'>"게임 정보"</h2>
+        <p class='description'>
+          이 게임은 건국대학교 스마트ICT융합공학과 코딩 동아리 CONA에서 제작 한 게임입니다!</br></br>강유미(프론트-카드게임 제작)</br>이지민(PM, 프론트-비행게임, 스틱 게임 제작)</br>윤희수(디자인)</br></p>        </p>
+        <a href="https://github.com/KU-minigame/KU-minigame-page"><button>코드 보기</button></a>
+      </div>
+    </li>
+    <li class='item' style="background-image: url('./Main.jpg')">
+      <div class='content'>
+        <h2 class='title'>"쿠의 미니게임"</br>화살표 키를 눌러 다양한 게임을 즐겨보세요</h2>
+        <p class='description'>
+          <P>
+          카드 맞추기 게임, 로켓 게임, 스틱 게임을 하고 랭킹을 통해 친구들과 경쟁해보세요</P>
+        <a href="ranking.html"><button>랭킹보기</button></a>
+
+      </div>
+    </li>
+    <li class='item' style="background-image: url('./StickGame/img/stick-thumnail.png')">
+      <div class='content'>
+        <h2 class='title'>"쿠의 학교 가기"</h2>
+        <p class='description'>
+          대학 첫 날, 개강을 앞두고 쿠가 늦잠을 자버렸어요! 
+          이제 쿠가 재시간에 학교에 도착하기 위해서는 절벽을 건너야 하는데요,
+          당신이 쿠를 도와주어 안전하게 학교에 도착하도록 해주세요! 하지만 조심해야 해요. 
+          잘못된 위치에 막대를 놓으면 쿠가 절벽으로 추락해버려서 
+          영원히 학교에 도착하지 못할 수도 있어요! 함께 쿠의 모험을 떠나볼까요? </p>
+        <a href="StickGame/stick.html"><button>게임하기</button></a>
+      </div>
+    </li>
+    <li class='item' style="background-image: url('./FlyingGame/img/flying-thumnail.png')">
+      <div class='content'>
+        <h2 class='title'>"로켓 타고 장애물 피하기"</h2>
+        <p class='description'>
+          공대생 쿠가 열심히 로켓을 만들었어요!
+          친구들이 장난감 로켓이라며 조롱하니 쿠는 분해서 진짜 실력을 보여주기로 결심했어요! 
+          이제 당신이 쿠와 함께 로켓을 타고 앞으로 나아가면서 등장하는 장애물들을 피해야 합니다. 
+          이 로켓은 정말 훌륭하게 만들어졌는데, 그 사실을 모두에게 보여주기 위해 모험에 도전해볼까요?
+          재미와 도전이 함께 어우러진 이 게임으로 쿠의 로켓 실력을 입증해보세요!
+          함께 장애물을 피하며 앞으로 나아가는 모험에 떠나볼까요?
+        </p>
+        <button>Read More</button>
+      </div>
+    </li>
+
+    <li class='item' style="background-image: url('./CardGame/img/Card-thumnail.jpg')">
+      <div class='content'>
+        <h2 class='title'>"쿠의 카드게임"</h2>
+        <p class='description'>쿠가 과제를 절박하게 맡았어요! 제출까지 단 1분 밖에 남지 않았답니다. 그리고 그 과제는 바로 '카드 맞추기'입니다! 시작할 때, 카드들은 공개되어 있지만, 10초 후에는 뒤집히게 됩니다. 여러분은 이 작은 시간 내에 쿠의 얼굴이 그려진 카드를 찾아 짝을 맞춰야 합니다. 과제를 무사히 완료하고 쿠를 도와줘야 해요! 이 게임은 집중력과 반응속도를 향상시키면서 재미를 느낄 수 있는 최고의 선택입니다. 과제 도와주기에 도전해볼까요?</p>
+        <a href="CardGame/card.html"><button>게임하기</button></a>
+      </div>
+    </li>
+
+
+  </ul>
+  <nav class='nav'>
+    <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
+    <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
+  </nav>
+</main>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+</body>
+</html>
