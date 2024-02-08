@@ -146,7 +146,7 @@ function generatePlatform() {
 
 resetGame();
 
-// If space was pressed restart the game
+// space 키가 눌리면 restart game
 window.addEventListener("keydown", function (event) {
   if (event.key == " ") {
     event.preventDefault();
@@ -155,6 +155,10 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
+//user input
+//사용자 입력 처리
+//마우스를 누르면 stretching 시작
+//이외의 경우에는 마우스 무시
 window.addEventListener("mousedown", function (event) {
   if (phase == "waiting") {
     lastTimestamp = undefined;
@@ -178,7 +182,7 @@ window.addEventListener("resize", function (event) {
 
 window.requestAnimationFrame(animate);
 
-// The main game loop
+// main loop
 function animate(timestamp) {
   if (!lastTimestamp) {
     lastTimestamp = timestamp;
