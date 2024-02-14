@@ -6,13 +6,27 @@ let score = 0;
 
 document.querySelector(".score").textContent = score;
 
-fetch("./data/cards.json")
-  .then((res) => res.json())
-  .then((data) => {
-    cards = [...data, ...data];
-    shuffleCards();
-    generateCards();
-  });
+// 직접 데이터를 정의
+const cardsData = [
+  { name: "card1", image: "./assets/card1.png" },
+  { name: "card2", image: "./assets/card2.png" },
+  { name: "card3", image: "./assets/card3.png" },
+  { name: "card4", image: "./assets/card4.png" },
+  { name: "card5", image: "./assets/card5.png" },
+  { name: "card6", image: "./assets/card6.png" },
+  { name: "card7", image: "./assets/card7.png" },
+  { name: "card8", image: "./assets/card8.png" },
+  { name: "card9", image: "./assets/card9.png" },
+  { name: "card10", image: "./assets/card10.png" },
+  { name: "card11", image: "./assets/card11.png" },
+  { name: "card12", image: "./assets/card12.png" }
+];
+
+// 데이터를 두 번 반복하여 cards 배열에 추가
+cards = [...cardsData, ...cardsData];
+
+shuffleCards();
+generateCards();
 
 function shuffleCards() {
   let currentIndex = cards.length,
