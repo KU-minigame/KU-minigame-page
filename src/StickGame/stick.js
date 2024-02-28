@@ -2,17 +2,16 @@ Array.prototype.last = function () {
   return this[this.length - 1];
 };
 
-// A sinus function that acceps degrees instead of radians
 Math.sinus = function (degree) {
   return Math.sin((degree / 180) * Math.PI);
 };
 
 // Game data
-let phase = "waiting"; // waiting | stretching | turning | walking | transitioning | falling
-let lastTimestamp; // The timestamp of the previous requestAnimationFrame cycle
+let phase = "waiting"; 
+let lastTimestamp; 
 
-let heroX; // Changes when moving forward
-let heroY; // Only changes when falling
+let kuX; 
+let kuY; 
 let sceneOffset; // Moves the whole game
 
 let platforms = [];
@@ -27,11 +26,11 @@ let score = 0;
 const canvasWidth = 375;
 const canvasHeight = 375;
 const platformHeight = 100;
-const heroDistanceFromEdge = 10; // While waiting
-const paddingX = 100; // The waiting position of the hero in from the original canvas size
+const kuDistanceFromEdge = 10; // While waiting
+const paddingX = 100; // The waiting position of the KU in from the original canvas size
 const perfectAreaSize = 10;
 
-// The background moves slower than the hero
+// The background moves slower than the KU
 const backgroundSpeedMultiplier = 0.2;
 
 const hill1BaseHeight = 100;
@@ -47,8 +46,8 @@ const walkingSpeed = 4;
 const transitioningSpeed = 2;
 const fallingSpeed = 2;
 
-const heroWidth = 17; // 24
-const heroHeight = 30; // 40
+const kuWidth = 17; // 24
+const kuHeight = 30; // 40
 
 const canvas = document.getElementById("game");
 canvas.width = window.innerWidth; // Make the Canvas full screen
@@ -64,9 +63,7 @@ const scoreElement = document.getElementById("score");
 // Initialize layout
 resetGame();
 
-// Resets game variables and layouts but does not start the game (game starts on keypress)
 function resetGame() {
-  // Reset game progress
   phase = "waiting";
   lastTimestamp = undefined;
   sceneOffset = 0;
@@ -77,8 +74,6 @@ function resetGame() {
   restartButton.style.display = "none";
   scoreElement.innerText = score;
 
-  // The first platform is always the same
-  // x + w has to match paddingX
   platforms = [{ x: 50, w: 50 }];
   generatePlatform();
   generatePlatform();
@@ -99,8 +94,8 @@ function resetGame() {
   generateTree();
   generateTree();
 
-  heroX = platforms[0].x + platforms[0].w - heroDistanceFromEdge;
-  heroY = 0;
+  kuX = platforms[0].x + platforms[0].w - kuDistanceFromEdge;
+  kuY = 0;
 
   draw();
 }
@@ -109,7 +104,6 @@ function generateTree() {
   const minimumGap = 30;
   const maximumGap = 150;
 
-  // X coordinate of the right edge of the furthest tree
   const lastTree = trees[trees.length - 1];
   let furthestX = lastTree ? lastTree.x : 0;
 
@@ -130,7 +124,6 @@ function generatePlatform() {
   const minimumWidth = 20;
   const maximumWidth = 100;
 
-  // X coordinate of the right edge of the furthest platform
   const lastPlatform = platforms[platforms.length - 1];
   let furthestX = lastPlatform.x + lastPlatform.w;
 
@@ -182,7 +175,6 @@ window.addEventListener("resize", function (event) {
 
 window.requestAnimationFrame(animate);
 
-// main loop
 function animate(timestamp) {
   if (!lastTimestamp) {
     lastTimestamp = timestamp;
@@ -192,7 +184,7 @@ function animate(timestamp) {
 
   switch (phase) {
     case "waiting":
-      return; // Stop the loop
+      return; 
     case "stretching": {
       sticks.last().length += (timestamp - lastTimestamp) / stretchingSpeed;
       break;
@@ -224,21 +216,21 @@ function animate(timestamp) {
       break;
     }
     case "walking": {
-      heroX += (timestamp - lastTimestamp) / walkingSpeed;
+      kuX += (timestamp - lastTimestamp) / walkingSpeed;
 
       const [nextPlatform] = thePlatformTheStickHits();
       if (nextPlatform) {
-        // If hero will reach another platform then limit it's position at it's edge
-        const maxHeroX = nextPlatform.x + nextPlatform.w - heroDistanceFromEdge;
-        if (heroX > maxHeroX) {
-          heroX = maxHeroX;
+        // If KU will reach another platform then limit it's position at it's edge
+        const maxkuX = nextPlatform.x + nextPlatform.w - kuDistanceFromEdge;
+        if (kuX > maxkuX) {
+          kuX = maxkuX;
           phase = "transitioning";
         }
       } else {
-        // If hero won't reach another platform then limit it's position at the end of the pole
-        const maxHeroX = sticks.last().x + sticks.last().length + heroWidth;
-        if (heroX > maxHeroX) {
-          heroX = maxHeroX;
+        // If KU won't reach another platform then limit it's position at the end of the pole
+        const maxkuX = sticks.last().x + sticks.last().length + kuWidth;
+        if (kuX > maxkuX) {
+          kuX = maxkuX;
           phase = "falling";
         }
       }
@@ -263,10 +255,10 @@ function animate(timestamp) {
       if (sticks.last().rotation < 180)
         sticks.last().rotation += (timestamp - lastTimestamp) / turningSpeed;
 
-      heroY += (timestamp - lastTimestamp) / fallingSpeed;
-      const maxHeroY =
+      kuY += (timestamp - lastTimestamp) / fallingSpeed;
+      const maxkuY =
         platformHeight + 100 + (window.innerHeight - canvasHeight) / 2;
-      if (heroY > maxHeroY) {
+      if (kuY > maxkuY) {
         restartButton.style.display = "block";
         return;
       }
@@ -282,7 +274,6 @@ function animate(timestamp) {
   lastTimestamp = timestamp;
 }
 
-// Returns the platform the stick hit (if it didn't hit any stick then return undefined)
 function thePlatformTheStickHits() {
   if (sticks.last().rotation != 90)
     throw Error(`Stick is ${sticks.last().rotation}°`);
@@ -292,7 +283,6 @@ function thePlatformTheStickHits() {
     (platform) => platform.x < stickFarX && stickFarX < platform.x + platform.w
   );
 
-  // If the stick hits the perfect area
   if (
     platformTheStickHits &&
     platformTheStickHits.x + platformTheStickHits.w / 2 - perfectAreaSize / 2 <
@@ -311,18 +301,15 @@ function draw() {
 
   drawBackground();
 
-  // Center main canvas area to the middle of the screen
   ctx.translate(
     (window.innerWidth - canvasWidth) / 2 - sceneOffset,
     (window.innerHeight - canvasHeight) / 2
   );
 
-  // Draw scene
   drawPlatforms();
-  drawHero();
+  drawKU();
   drawSticks();
 
-  // Restore transformation
   ctx.restore();
 }
 
@@ -334,8 +321,7 @@ restartButton.addEventListener("click", function (event) {
 
 function drawPlatforms() {
   platforms.forEach(({ x, w }) => {
-    // Draw platform
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "green";
     ctx.fillRect(
       x,
       canvasHeight - platformHeight,
@@ -343,67 +329,26 @@ function drawPlatforms() {
       platformHeight + (window.innerHeight - canvasHeight) / 2
     );
 
-    // Draw perfect area only if hero did not yet reach the platform
-    if (sticks.last().x < x) {
-      ctx.fillStyle = "red";
-      ctx.fillRect(
-        x + w / 2 - perfectAreaSize / 2,
-        canvasHeight - platformHeight,
-        perfectAreaSize,
-        perfectAreaSize
-      );
-    }
+
   });
 }
 
-function drawHero() {
+
+function drawKU() {
   ctx.save();
-  ctx.fillStyle = "black";
   ctx.translate(
-    heroX - heroWidth / 2,
-    heroY + canvasHeight - platformHeight - heroHeight / 2
+    kuX - kuWidth / 2,
+    kuY + canvasHeight - platformHeight - kuHeight / 2-30
   );
 
-  // Body
-  drawRoundedRect(
-    -heroWidth / 2,
-    -heroHeight / 2,
-    heroWidth,
-    heroHeight - 4,
-    5
-  );
-
-  // Legs
-  const legDistance = 5;
-  ctx.beginPath();
-  ctx.arc(legDistance, 11.5, 3, 0, Math.PI * 2, false);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.arc(-legDistance, 11.5, 3, 0, Math.PI * 2, false);
-  ctx.fill();
-
-  // Eye
-  ctx.beginPath();
-  ctx.fillStyle = "white";
-  ctx.arc(5, -7, 3, 0, Math.PI * 2, false);
-  ctx.fill();
-
-  // Band
-  ctx.fillStyle = "red";
-  ctx.fillRect(-heroWidth / 2 - 1, -12, heroWidth + 2, 4.5);
-  ctx.beginPath();
-  ctx.moveTo(-9, -14.5);
-  ctx.lineTo(-17, -18.5);
-  ctx.lineTo(-14, -8.5);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(-10, -10.5);
-  ctx.lineTo(-15, -3.5);
-  ctx.lineTo(-5, -7);
-  ctx.fill();
+  var kuImg = document.getElementById('ku');
+  ctx.drawImage(kuImg, -kuWidth / 2, -kuHeight / 2, kuWidth * 2, kuHeight * 2);
 
   ctx.restore();
 }
+
+
+
 
 function drawRoundedRect(x, y, width, height, radius) {
   ctx.beginPath();
@@ -422,25 +367,20 @@ function drawRoundedRect(x, y, width, height, radius) {
 function drawSticks() {
   sticks.forEach((stick) => {
     ctx.save();
-
-    // Move the anchor point to the start of the stick and rotate
     ctx.translate(stick.x, canvasHeight - platformHeight);
     ctx.rotate((Math.PI / 180) * stick.rotation);
 
-    // Draw stick
     ctx.beginPath();
     ctx.lineWidth = 2;
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -stick.length);
     ctx.stroke();
 
-    // Restore transformations
     ctx.restore();
   });
 }
 
 function drawBackground() {
-  // Draw sky
   var gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
   gradient.addColorStop(0, "#BBD691");
   gradient.addColorStop(1, "#FEF1E1");
@@ -499,6 +439,7 @@ function drawTree(x, color) {
 
   ctx.restore();
 }
+
 
 function getHillY(windowX, baseHeight, amplitude, stretch) {
   const sineBaseY = window.innerHeight - baseHeight;

@@ -7,3 +7,4 @@ function activate(e) {
 }
 
 document.addEventListener('click',activate,false);
+
