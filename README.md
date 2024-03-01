@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://github.com/KU-minigame/KU-minigame-page/assets/131771046/8e9d61ea-99c0-4144-af64-1702513c4b46">
 </p>
-안녕하세요! 저희는 교내 개발 동아리 CONA입니다<br>
+안녕하세요! 저희는 건국대학교 개발 동아리 CONA입니다<br>
 CONA에서 스마트ict융합공학과 학생들이 모여 이번 방학에 신입생을 위해서 미니게임 사이트를 만들었습니다<br><br>
 
 학교에 가기 전에 게임을 통해서 설렘을 미리 느껴보세요!<br><br>
