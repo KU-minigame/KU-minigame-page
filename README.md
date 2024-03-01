@@ -9,21 +9,21 @@ CONA에서 스마트ict융합공학과 학생들이 모여 이번 방학에 신�
 
 홈페이지에서 화살표를 넘겨 가면서 게임을 골라볼 수 있어요<br><br>
 
-게임 링크: ku-game.site<br><br>
+게임 링크: [플레이하기 (클릭)](www.ku-game.site)
 
 
-## 카드 맞추기
+## 🃏카드 맞추기
 <p align="center">
   <img src="https://github.com/KU-minigame/KU-minigame-page/assets/131771046/7e94077f-4003-4a9c-815b-d8fc21357af3">
 </p>
 쿠와 춘장이, 학교 학잠, 건국대 건물 그리고 다양한 건국대를 대표하는 그림들이 그려진 카드가 뒤집어져있습니다.<br>
 카드를 기억하고 짝을 맞춰주세요!<br><br>
 
-(모바일 및 데스크탑에서 플레이가 가능합니다)<br><br>
+(모바일 및 데스크탑에서 플레이가 가능합니다)<br>
 
 
 
-## 쿠의 학교가기
+## 🏫쿠의 학교가기
 <p align="center">
   <img src="https://github.com/KU-minigame/KU-minigame-page/assets/131771046/0f0351f1-fd84-4e95-8a33-0fdaead18b3b">
 </p>
