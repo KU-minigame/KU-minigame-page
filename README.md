@@ -36,5 +36,13 @@ CONA에서 스마트ict융합공학과 학생들이 모여 이번 방학에 신�
   <img src="https://github.com/KU-minigame/KU-minigame-page/assets/131771046/103cfab4-8e12-48c4-b89b-a118859f6b9d">
 </p>
 
+
+## 🧑🏻‍💻 Team CONA
+
+|     |     |     |
+|:---:|:---:|:---:|
+|이지민 [@clicelee](https://github.com/speculatingwook)|강유미 [@king-yummy](https://github.com/king-yummy)|윤희수 [@Heheheesu](https://github.com/Heheheesu)|
+|Frontend/PM|Frontend|Designer|
+
 쿠를 포함한 사이트에 있는 모든 그림은 직접 그린 그림입니다! <br>
 ⓒCONA
